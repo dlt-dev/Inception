@@ -5,9 +5,9 @@ RUN apt-get update && apt-get install -y mariadb-server \
 
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-#RUN 
+COPY tools/init.sh /usr/local/bin/init.sh
+RUN chmod +x /usr/local/bin/init.sh
 
+EXPOSE 3306
 
-#EXPOSE 3306
-
-#ENTRYPOINT ["/init_mariadb.sh"]
+ENTRYPOINT ["/usr/local/bin/init.sh"]
