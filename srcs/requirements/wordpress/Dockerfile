@@ -21,5 +21,10 @@ RUN mkdir -p /run/php
 
 EXPOSE 9000
 
-# run php-fpm in the foreground as PID 1
-ENTRYPOINT ["php-fpm8.2", "-F", "-O"]
+COPY tools/setup.sh /usr/local/bin/setup.sh
+
+RUN chmod +x /usr/local/bin/setup.sh && mkdir -p /var/www/html
+
+WORKDIR /var/www/html
+
+ENTRYPOINT ["/usr/local/bin/setup.sh"]
