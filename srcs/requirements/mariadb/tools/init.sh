@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# ajouter une ligne pour le premier lancement, configurer database folder ?
+# if [ ! -d "/var/lib/mysql/${SQL_DATABASE}" ]; then ................
+
 # start to configure
 service mariadb start
 
@@ -29,7 +32,7 @@ mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';"
 # restart with new config, first shutdown
 mysqladmin -u root -p"${SQL_ROOT_PASSWORD}" shutdown
 
-# launches the real server and restarts it if it crashes
+# launches the real server (  becomes PID 1)
 mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 
