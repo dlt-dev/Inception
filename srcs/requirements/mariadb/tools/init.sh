@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# loking for password dans /secret
+SQL_PASSWORD=$(cat /run/secrets/db_password)
+SQL_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
 
 # a bind-mounted folder arrives empty and owned by the host user
 # start to configure

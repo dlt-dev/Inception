@@ -3,6 +3,11 @@
 # stop the container if any command fails
 set -e   
 
+# loking for password dans /secret
+SQL_PASSWORD=$(cat /run/secrets/db_password)
+WP_ADMIN_PASSWORD=$(cat /run/secrets/wp_admin_password)
+WP_USER_PASSWORD=$(cat /run/secrets/wp_user_password)
+
 # attendre until MariaDB accepts a REAL login
 until mariadb -h mariadb -u"${SQL_USER}" -p"${SQL_PASSWORD}" "${SQL_DATABASE}" -e "SELECT 1;" >/dev/null 2>&1; do
     echo "waiting for mariadb..."

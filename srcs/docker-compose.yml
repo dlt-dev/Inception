@@ -1,0 +1,77 @@
+name: inception            # project name: prefix for the names Compose creates
+
+services:
+  mariadb:
+    build: ./requirements/mariadb     # folder with the Dockerfile
+    image: mariadb                    # image name = service name
+    container_name: mariadb
+    env_file: .env                    # the variables from srcs/.env
+    secrets:                          # files mounted in /run/secrets/
+      - db_password
+      - db_root_password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception
+    restart: unless-stopped           # restart on crash
+
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    env_file: .env
+    secrets:
+      - db_password
+      - wp_admin_password
+      - wp_user_password
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception
+    depends_on:
+      - mariadb                       # start order only
+    restart: unless-stopped
+
+  nginx:
+    build: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    ports:
+      - "443:443"                     # the ONLY published port
+    volumes:
+      - wordpress_data:/var/www/html  # same files as WordPress
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    restart: unless-stopped
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:                      # named volume stored in a host folder
+      type: none
+      o: bind
+      device: /home/jdelattr/data/mariadb
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/jdelattr/data/wordpress
+
+networks:
+  inception:
+    driver: bridge
+
+secrets:
+  db_password:
+    file: ../secrets/db_password.txt  # path relative to this file (srcs/)
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+  wp_admin_password:
+    file: ../secrets/wp_admin_password.txt
+  wp_user_password:
+    file: ../secrets/wp_user_password.txt
+
+    
