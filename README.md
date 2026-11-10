@@ -137,7 +137,11 @@ The administration area is at **https://jdelattr.42.fr/wp-admin**.
 
 
 
+### Use of AI
 
+- **Understanding concepts:** images, containers, volumes and networks, PID 1, `ENTRYPOINT` vs `CMD`... 
+- **Debugging:** reading error messages and logs with it and finding the cause (for example a wrong certificate name, or a script waiting forever for the database).
+- **Documentation:** help with the wording and structure of this README, and a diagram of the project.
 
 
 
