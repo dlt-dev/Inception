@@ -121,12 +121,20 @@ The administration area is at **https://jdelattr.42.fr/wp-admin**.
 
 # Ressources
 
+- Docker documentation: https://docs.docker.com/ (Dockerfile reference, Compose file reference, networks, volumes, secrets)
+- NGINX documentation: https://nginx.org/en/docs/ (SSL/TLS settings, FastCGI)
+- PHP-FPM: https://www.php.net/manual/en/install.fpm.php
+- WP-CLI handbook: https://make.wordpress.org/cli/handbook/
+- MariaDB documentation: https://mariadb.com/kb/en/
+- GNU Make manual: https://www.gnu.org/software/make/manual/
+- OpenSSL `req` manual (self-signed certificate)
+
 - [VM vs Containers: Understanding the Differences](https://www.backblaze.com/blog/vm-vs-containers/)
 - [What Are Containers Made From? Kubernetes Story](https://faun.pub/kubernetes-story-linux-namespaces-and-cgroups-what-are-containers-made-from-d544ac9bd622)
 - [Understanding Docker Containers: Leveraging Linux Kernels, Namespaces, and Cgroups](https://dev.to/mochafreddo/understanding-docker-containers-leveraging-linux-kernels-namespaces-and-cgroups-4fkk)
 - [LXC vs Docker: What’s the Difference?](https://www.docker.com/blog/lxc-vs-docker/#:~:text=Docker%20is%20designed%20for%20developers,the%20operating%20system%20and%20hardware.)
 - [The Evolution of Docker Containers](https://www.baeldung.com/linux/docker-containers-evolution)
-- [Docker Documentation](https://docs.docker.com/)
+
 
 
 
