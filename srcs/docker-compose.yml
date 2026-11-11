@@ -1,5 +1,9 @@
 name: inception            # project name: prefix for the names Compose creates
 
+# four blocks (services, volumes, network, secrets)
+
+# services = containers
+
 services:
   mariadb:
     build: ./requirements/mariadb     # folder with the Dockerfile
@@ -46,6 +50,10 @@ services:
       - wordpress
     restart: unless-stopped
 
+# shared resources the services plug into
+
+# volumes = named volume that stores its data in a host folder / folder must exist before starting (Makefile creates it)
+
 volumes:
   mariadb_data:
     driver: local
@@ -60,9 +68,13 @@ volumes:
       o: bind
       device: /home/jdelattr/data/wordpress
 
+#  networkes = the private network, the containers on it find each other by name (only public nginx 443)
+
 networks:
   inception:
     driver: bridge
+
+# secrets = each secret is a file, the path is relative to the compose file
 
 secrets:
   db_password:
