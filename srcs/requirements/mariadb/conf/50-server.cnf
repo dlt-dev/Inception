@@ -1,6 +1,16 @@
 [mysqld]
+
+# give only the rights it needs (access to database files qand sockets folder)
 user = mysql
+
+# folder my volumes is mounted on (why data survives the container)
 datadir = /var/lib/mysql
+
+# script use it, file used for connections inside the container
 socket = /run/mysqld/mysqld.sock
+
+# talk to
 port = 3306
+
+# listen in all network intefaces (default only accept connevtions from inside)
 bind-address = 0.0.0.0
