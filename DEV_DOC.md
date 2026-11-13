@@ -9,6 +9,15 @@
 ## Set up from scratch
 
 1. Clone the repository.
+
+(1.1). Checks
+ ```git ls-files | grep -E "(^|/)\.env$|secrets"
+git log --all --oneline -S wppass123
+grep -rniE "password|passwd" srcs --include=Dockerfile --include=*.yml --include=*.sh --include=*.conf
+grep -rnE "network: *host|links:|--link|tail -f|sleep infinity|while true" srcs Makefile
+grep -rn "latest" srcs
+```
+
 2. Add the domain to `/etc/hosts`:
    ```bash
    echo "127.0.0.1 jdelattr.42.fr" | sudo tee -a /etc/hosts
