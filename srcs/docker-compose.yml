@@ -78,12 +78,12 @@ networks:
 
 secrets:
   db_password:
-    file: ../secrets/db_password.txt  # path relative to this file (srcs/)
+    file: ../secrets/db_user.txt  # path relative to this file (srcs/)
   db_root_password:
-    file: ../secrets/db_root_password.txt
+    file: ../secrets/db_gigaboss.txt
   wp_admin_password:
-    file: ../secrets/wp_admin_password.txt
+    file: ../secrets/wp_gigaboss.txt
   wp_user_password:
-    file: ../secrets/wp_user_password.txt
+    file: ../secrets/wp_user.txt
 
     
