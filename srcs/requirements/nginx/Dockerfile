@@ -17,6 +17,8 @@ RUN apt update && \
 # remove le site par default port 80 (we need 443)
 RUN rm -f /etc/nginx/sites-enabled/default
 
+# ss -tlnp | grep ':80 ' (check)
+
 
 # create a selfsigned certificate + options 
 # (1 year, no passphrse, where the key and certificate are writen ...)
